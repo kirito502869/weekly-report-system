@@ -102,8 +102,8 @@ does not enforce those text rules. An index covers `(user_id, week_start)`.
 
 The `get_db` dependency provides one session per request, closes it afterward,
 and rolls back on exceptions. Write handlers explicitly commit their changes.
-Table creation is suitable for this interview phase; it does not migrate existing
-schemas. No user-deletion cascade is configured.
+Table creation happens at startup and is suitable for local development; it does
+not migrate existing schemas — use Alembic for that. No user-deletion cascade is configured.
 
 ## Tests
 
@@ -119,3 +119,22 @@ CRUD success/error responses, list filters, isolation between users, report grou
 and status counts, week boundaries, empty weeks, percentages, and live report updates.
 
 Foreign-key setup follows the [SQLAlchemy SQLite documentation](https://docs.sqlalchemy.org/en/20/dialects/sqlite.html#foreign-key-support).
+
+## Project layout
+
+```
+wrs/
+├── app/
+│   ├── main.py            # FastAPI application and lifespan
+│   ├── models.py          # SQLAlchemy 2 models
+│   ├── schemas.py         # Pydantic 2 request/response schemas
+│   ├── database.py        # Engine, session, get_db dependency
+│   ├── logging_config.py  # LOG_LEVEL-driven logging
+│   ├── routers/           # users, work_items, reports
+│   └── services/          # report aggregation logic
+└── tests/                 # pytest, isolated SQLite per test
+```
+
+## License
+
+MIT
