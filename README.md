@@ -1,4 +1,10 @@
-# Weekly report backend — Phase 3
+# Weekly report backend
+
+![tests](https://github.com/kirito502869/weekly-report-system/actions/workflows/test.yml/badge.svg)
+![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+
+REST API for tracking users' weekly work items and generating summary reports on demand.
 
 FastAPI, SQLAlchemy 2, Pydantic 2, and SQLite foundation. Requires Python 3.11+.
 User creation, work-item CRUD, and on-demand weekly reports are implemented. There is no authentication,
