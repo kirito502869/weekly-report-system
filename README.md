@@ -111,6 +111,13 @@ not migrate existing schemas — use Alembic for that. No user-deletion cascade 
 python -m pytest -q
 ```
 
+```text
+109 passed in 1.89s
+```
+
+Coverage spans CRUD success and error paths, list filters, cross-user isolation,
+report grouping and percentage math, week boundary validation, and rollback behaviour.
+
 Each test receives a temporary SQLite file and uses the real application lifespan.
 Fixtures provide the application, client, engine, and session without touching the
 development database. Tests cover table/index creation, persistence and defaults,
